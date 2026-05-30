@@ -566,7 +566,7 @@ export default function AdminDashboard() {
                 </div>
               </div>
 
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "1rem", borderTop: "1px solid var(--border-color)", paddingTop: "1rem" }}>
+              <div className="form-grid-split" style={{ borderTop: "1px solid var(--border-color)", paddingTop: "1rem" }}>
                 <div className="form-group" style={{ marginBottom: 0 }}>
                   <label className="form-label">Initial Pending Amt (₹)</label>
                   <input 
@@ -613,7 +613,7 @@ export default function AdminDashboard() {
         )}
 
         {/* Dashboard Content Grid */}
-        <div className="dashboard-grid" style={{ gridTemplateColumns: selectedCust ? "4fr 5fr" : "1fr" }}>
+        <div className={`dashboard-grid ${selectedCust ? 'admin-split-view' : ''}`} style={{ gridTemplateColumns: selectedCust ? undefined : "1fr" }}>
           
           {/* Customer Directory List */}
           <div className="card">
@@ -707,7 +707,7 @@ export default function AdminDashboard() {
               </div>
 
               {/* Profile Details Cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", marginBottom: "1.5rem" }}>
+              <div className="details-grid-two-col" style={{ marginBottom: "1.5rem" }}>
                 <div className="card" style={{ padding: "1rem", background: "var(--bg-secondary)" }}>
                   <span className="text-muted" style={{ fontSize: "0.7rem", textTransform: "uppercase" }}>Pending Invoice</span>
                   <div className="mono-font" style={{ fontSize: "1.25rem", fontWeight: "700", marginTop: "0.25rem" }}>
