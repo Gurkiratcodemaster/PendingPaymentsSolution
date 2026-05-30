@@ -1,6 +1,8 @@
 /* Modern, Clean Neutral Color Palette & Styling System */
 
 :root {
+  color-scheme: light;
+
   /* Colors */
   --bg-primary: #ffffff;
   --bg-secondary: #fafafa;
@@ -53,6 +55,8 @@
 /* Dark Mode preferences override */
 @media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: dark;
+
     --bg-primary: #09090b;
     --bg-secondary: #121214;
     --bg-tertiary: #1b1b1f;
@@ -88,6 +92,25 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+button, input, select, textarea {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  text-align: inherit;
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.8;
 }
 
 html, body {
