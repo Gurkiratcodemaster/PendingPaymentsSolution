@@ -490,10 +490,10 @@ export default function AdminDashboard() {
       <main className="main-container">
         
         {/* Top welcome layout */}
-        <div className="flex-between mb-md">
+        <div className="flex-between mb-md" style={{ flexWrap: "wrap", gap: "1rem" }}>
           <div>
             <span className="mono-font text-muted">CONTROL DASHBOARD</span>
-            <h1 style={{ fontSize: "2rem", marginTop: "0.25rem", fontFamily: "var(--font-mono)" }}>
+            <h1 style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)", marginTop: "0.25rem", fontFamily: "var(--font-mono)" }}>
               Pending Accounts
             </h1>
           </div>
@@ -616,7 +616,7 @@ export default function AdminDashboard() {
         <div className={`dashboard-grid ${selectedCust ? 'admin-split-view' : ''}`} style={{ gridTemplateColumns: selectedCust ? undefined : "1fr" }}>
           
           {/* Customer Directory List */}
-          <div className="card">
+          <div className={`card ${selectedCust ? 'mobile-hidden' : ''}`}>
             <h3 className="card-title">
               <User size={16} /> Customer Profiles
             </h3>
@@ -680,6 +680,15 @@ export default function AdminDashboard() {
           {/* Customer Details & History Management Panel */}
           {selectedCust && activeCustomerSummary && (
             <div className="card">
+              {/* Back to Profiles button visible only on mobile */}
+              <button 
+                onClick={() => setSelectedCust(null)} 
+                className="btn btn-outline mobile-only mb-md"
+                style={{ width: "auto", padding: "0.5rem 1rem", fontSize: "0.85rem" }}
+              >
+                ← Back to Profiles
+              </button>
+
               <div className="flex-between mb-md" style={{ borderBottom: "1px solid var(--border-color)", paddingBottom: "0.75rem" }}>
                 <div>
                   <span className="mono-font text-muted" style={{ fontSize: "0.75rem" }}>PROFILE INVOICES</span>
@@ -741,8 +750,8 @@ export default function AdminDashboard() {
                   {activeCustomerSummary.history.map((tx) => (
                     <div key={tx.id} className="transaction-item">
                       <div className="tx-details">
-                        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-                          <span className="tx-reason">{tx.reason}</span>
+                        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
+                          <span className="tx-reason" style={{ wordBreak: "break-word" }}>{tx.reason}</span>
                           <span className={`tx-type-pill ${tx.type === "charge" ? "tx-type-charge" : "tx-type-payment"}`}>
                             {tx.type}
                           </span>

@@ -186,7 +186,7 @@ export default function Home() {
 
             <div className="mb-md">
               <span className="text-muted">Welcome, customer</span>
-              <h1 style={{ fontSize: "2rem", marginTop: "0.25rem", fontFamily: "var(--font-mono)" }}>
+              <h1 style={{ fontSize: "clamp(1.5rem, 5vw, 2rem)", marginTop: "0.25rem", fontFamily: "var(--font-mono)", wordBreak: "break-word" }}>
                 {verifiedCust.name}
               </h1>
             </div>
@@ -208,21 +208,21 @@ export default function Home() {
                 </div>
 
                 <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "1.5rem" }}>
-                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem", borderBottom: "1px solid var(--border-color)" }}>
+                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem", borderBottom: "1px solid var(--border-color)", flexWrap: "wrap", gap: "0.5rem" }}>
                     <span>Original Charges Balance:</span>
                     <span className="mono-font" style={{ color: "var(--text-primary)" }}>
                       ₹{verifiedSummary.totalPrincipalUnpaid.toFixed(2)}
                     </span>
                   </div>
                   
-                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem", borderBottom: "1px solid var(--border-color)" }}>
+                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem", borderBottom: "1px solid var(--border-color)", flexWrap: "wrap", gap: "0.5rem" }}>
                     <span>Accumulated Interest:</span>
                     <span className="mono-font" style={{ color: verifiedSummary.totalInterestAccumulated > 0 ? "var(--warning)" : "var(--text-primary)" }}>
                       ₹{verifiedSummary.totalInterestAccumulated.toFixed(2)}
                     </span>
                   </div>
 
-                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem" }}>
+                  <div className="flex-between text-muted" style={{ paddingBottom: "0.5rem", flexWrap: "wrap", gap: "0.5rem" }}>
                     <span>Total Payments Logged:</span>
                     <span className="mono-font" style={{ color: "var(--success)" }}>
                       ₹{verifiedSummary.totalPaymentsMade.toFixed(2)}
@@ -272,11 +272,11 @@ export default function Home() {
                       />
                     </div>
                     
-                    <div style={{ marginBottom: "1rem" }}>
-                      <p className="mono-font" style={{ fontSize: "0.9rem", fontWeight: "700" }}>
+                    <div style={{ marginBottom: "1rem", width: "100%" }}>
+                      <p className="mono-font" style={{ fontSize: "0.9rem", fontWeight: "700", wordBreak: "break-all" }}>
                         UPI ID: {process.env.NEXT_PUBLIC_UPI_ID || "printshop@upi"}
                       </p>
-                      <p className="text-muted" style={{ fontSize: "0.8rem", marginTop: "0.25rem" }}>
+                      <p className="text-muted" style={{ fontSize: "0.8rem", marginTop: "0.25rem", wordBreak: "break-word" }}>
                         Merchant Name: {process.env.NEXT_PUBLIC_MERCHANT_NAME || "Quantum Printing"}
                       </p>
                     </div>
@@ -315,9 +315,9 @@ export default function Home() {
                 <div className="transaction-list">
                   {verifiedSummary.history.map((tx) => (
                     <div key={tx.id} className="transaction-item">
-                      <div className="tx-details">
-                        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-                          <span className="tx-reason">{tx.reason}</span>
+                      <div className="tx-details" style={{ width: "100%" }}>
+                        <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", flexWrap: "wrap" }}>
+                          <span className="tx-reason" style={{ wordBreak: "break-word" }}>{tx.reason}</span>
                           <span className={`tx-type-pill ${tx.type === "charge" ? "tx-type-charge" : "tx-type-payment"}`}>
                             {tx.type}
                           </span>
@@ -346,7 +346,7 @@ export default function Home() {
               <span className="mono-font" style={{ textTransform: "uppercase", fontSize: "0.8rem", color: "var(--text-secondary)", letterSpacing: "2px" }}>
                 Printing Shop Board
               </span>
-              <h1 style={{ fontSize: "2.5rem", marginTop: "0.5rem", marginBottom: "1rem", fontFamily: "var(--font-mono)" }}>
+              <h1 style={{ fontSize: "clamp(1.8rem, 6vw, 2.5rem)", marginTop: "0.5rem", marginBottom: "1rem", fontFamily: "var(--font-mono)", lineHeight: "1.2" }}>
                 Pending Payments
               </h1>
               <p className="text-muted" style={{ lineHeight: "1.6" }}>
